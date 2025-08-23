@@ -1,0 +1,67 @@
+body {
+     display: grid;
+  place-items: center;
+    height: 100vh; /* يجعل الجسم يأخذ ارتفاع الشاشة بالكامل */
+  margin: 0;
+  background-color: #1e142c; /* لون الخلفية الأساسي */
+}
+* {
+  box-sizing: border-box;
+}
+
+.ocean {
+  height: 100%; /* ارتفاع منطقة الموجة */
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #cc0e0e; /* لون الموجة الأساسي */
+  overflow: hidden;
+}
+
+.wave {
+  background: rgb(28, 6, 6); /* لون قمة الموجة، هنا أبيض شبه شفاف */
+  border-radius: 1000%; /* يجعل العنصر بيضاويًا جدًا ليشبه الموجة */
+  position: absolute;
+  width: 200%; /* عرض الموجة أكبر من الشاشة لتتحرك بسلاسة */
+  height: 200%;
+  animation: wave-animation 8s linear infinite;
+  opacity: 0.8;
+}
+
+/* نجعل الموجة الثانية تبدأ من مكان مختلف وتتحرك بسرعة مختلفة لمزيد من الواقعية */
+.wave:nth-of-type(2) {
+  bottom: -25%;
+  animation-duration: 18s;
+}
+
+/* تعريف الحركة */
+@keyframes wave-animation {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-50%) rotate(360deg); /* يحرك الموجة أفقيًا ويدورها */
+  }
+}   
+
+
+.login {
+  background-color: #4ec417;
+   background: rgb(246, 243, 249);
+  backdrop-filter: blur(38px);
+  box-shadow: 0 40px 30px rgb(0 0 0 / 10%);
+  border-radius: 40px;
+  padding: 72px 32px 58px;
+  width: 380px;
+ display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+}
+.login img {
+  width: 74px;
+  margin: 0 0 32px;
+}
