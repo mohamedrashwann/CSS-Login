@@ -1,67 +1,195 @@
 body {
-     display: grid;
-  place-items: center;
-    height: 100vh; /* يجعل الجسم يأخذ ارتفاع الشاشة بالكامل */
-  margin: 0;
-  background-color: #1e142c; /* لون الخلفية الأساسي */
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #920101;
+    font-family: "Euclid Circular A", "Poppins";
 }
+
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .ocean {
-  height: 100%; /* ارتفاع منطقة الموجة */
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background: #cc0e0e; /* لون الموجة الأساسي */
-  overflow: hidden;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #d6882f;
+    overflow: hidden;
 }
 
 .wave {
-  background: rgb(28, 6, 6); /* لون قمة الموجة، هنا أبيض شبه شفاف */
-  border-radius: 1000%; /* يجعل العنصر بيضاويًا جدًا ليشبه الموجة */
-  position: absolute;
-  width: 200%; /* عرض الموجة أكبر من الشاشة لتتحرك بسلاسة */
-  height: 200%;
-  animation: wave-animation 8s linear infinite;
-  opacity: 0.8;
+    background: rgb(98, 7, 155);
+    /* لون قمة الموجة، هنا أبيض شبه شفاف */
+    border-radius: 1000%;
+    /* يجعل العنصر بيضاويًا جدًا ليشبه الموجة */
+    position: absolute;
+    width: 100%;
+    /* عرض الموجة أكبر من الشاشة لتتحرك بسلاسة */
+    height: 100%;
+    animation: wave-animation 8s linear infinite;
+    opacity: 0.8;
 }
 
 /* نجعل الموجة الثانية تبدأ من مكان مختلف وتتحرك بسرعة مختلفة لمزيد من الواقعية */
 .wave:nth-of-type(2) {
-  bottom: -25%;
-  animation-duration: 18s;
+    bottom: -25%;
+    animation-duration: 18s;
 }
 
 /* تعريف الحركة */
 @keyframes wave-animation {
-  0% {
-    transform: translateX(0) rotate(0deg);
-  }
-  100% {
-    transform: translateX(-50%) rotate(360deg); /* يحرك الموجة أفقيًا ويدورها */
-  }
-}   
+    0% {
+        transform: translateX(0) rotate(0deg);
+    }
 
-
-.login {
-  background-color: #4ec417;
-   background: rgb(246, 243, 249);
-  backdrop-filter: blur(38px);
-  box-shadow: 0 40px 30px rgb(0 0 0 / 10%);
-  border-radius: 40px;
-  padding: 72px 32px 58px;
-  width: 380px;
- display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  
+    100% {
+        transform: translateX(50%) rotate(360deg);
+        /* يحرك الموجة أفقيًا ويدورها */
+    }
 }
+
+/* per-login */
+.login {
+backdrop-filter: blur(38px);
+    background: rgba(255, 255, 255, 0.158);
+    backdrop-filter: blur(38px);
+    box-shadow: 0 40px 30px rgb(0 0 0 / 10%);
+    border-radius: 40px;
+    padding: 72px 32px 58px;
+    width: 380px;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #0a0202;
+    text-shadow: #f9f9f9 0px 0px 20px;
+
+}
+
+/* logo */
 .login img {
-  width: 74px;
-  margin: 0 0 32px;
+    width: 74px;
+    margin: 0 0 18px;
+    ;
+}
+
+/* welcome and lightning..... */
+.login h2, h3 {
+    font-weight: 800;
+
+}
+
+.login h2 {
+    font-size: 24px;
+    margin: 0 0 1px;
+}
+
+.login h3 {
+
+    font-size: 12px;
+    margin: 0 0 10px;
+}
+
+/* input  */
+.login form {
+    display: grid;
+    gap: 10px;
+    width: 100%;
+    margin: 0 0 15px;
+
+}
+
+.login :is(input, button) {
+    height: 56px;
+    font-family: inherit;
+    font-size: 16px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 8px;
+}
+
+.login .textbox {
+    position: relative;
+}
+
+label,
+input {
+    transition: 0.3s;
+}
+
+.textbox label {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    translate: 0 -50%;
+    transform-origin: 0 50%;
+    pointer-events: none;
+    color: var(--color-muted);
+}
+
+.textbox input {
+    width: 100%;
+    padding-top: 10px;
+    background: #f3f2f4;
+    outline: none;
+    color: inherit;
+    box-shadow: 0 0 0 2px transparent;
+}
+
+.textbox input:focus {
+    box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+.textbox input:is(:focus, :not(:invalid))~label {
+    scale: 0.725;
+    translate: 0 -112%;
+}
+/* button */
+.login button {
+    font-weight: 900;
+    position: relative;
+    color: #f9f9f9;
+    font-size: 17px;
+    background: var(--color-primary);
+    cursor: pointer;
+}
+
+.login :is(button span, button p) {
+    transition: 0.3s;
+    color: black;
+}
+
+.login button span {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    translate: 10px -50%;
+    opacity: 0;
+    font-size: 22px;
+}
+
+.login button:hover p {
+    translate: -10px 0;
+}
+
+.login button:hover span {
+    opacity: 1;
+    translate: 20px -50%;
+}
+
+.login a {
+    font-size: 15px;
+    color: var(--color-primary);
+}
+
+.login>p {
+   
+    font-size: 15px;
+    color: var(--color-muted);
 }
